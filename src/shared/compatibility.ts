@@ -1,0 +1,30 @@
+export function buildCompatibilityTranscodeArgs(inputPath: string, outputPath: string): string[] {
+  return [
+    '-y',
+    '-nostdin',
+    '-hide_banner',
+    '-loglevel',
+    'error',
+    '-i',
+    inputPath,
+    '-map',
+    '0:v:0',
+    '-map',
+    '0:a:0?',
+    '-c:v',
+    'libx264',
+    '-preset',
+    'veryfast',
+    '-pix_fmt',
+    'yuv420p',
+    '-vf',
+    'pad=ceil(iw/2)*2:ceil(ih/2)*2',
+    '-movflags',
+    '+faststart',
+    '-c:a',
+    'libmp3lame',
+    '-b:a',
+    '128k',
+    outputPath
+  ];
+}

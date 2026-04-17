@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1320"/>
+      <stop offset="1" stop-color="#171E2B"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="380" y1="168" x2="1210" y2="714" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3C92FF"/>
+      <stop offset="0.5" stop-color="#1B7E73"/>
+      <stop offset="1" stop-color="#0E203F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="120" y="96" width="1360" height="708" rx="28" fill="#0E121A"/>
+  <rect x="120" y="96" width="1360" height="58" rx="28" fill="#151D27"/>
+  <rect x="156" y="118" width="220" height="18" rx="9" fill="#273244"/>
+  <rect x="154" y="184" width="1292" height="564" rx="24" fill="#070A10"/>
+  <rect x="190" y="214" width="1220" height="474" rx="18" fill="url(#frame)"/>
+  <circle cx="1114" cy="344" r="126" fill="#70C4FF" fill-opacity="0.34"/>
+  <circle cx="494" cy="520" r="182" fill="#162A4B" fill-opacity="0.74"/>
+  <path d="M760 454C760 355 840 276 938 276C1037 276 1118 355 1118 454C1118 553 1037 634 938 634C840 634 760 553 760 454Z" fill="#E9F2FF" fill-opacity="0.88"/>
+  <path d="M900 397L1010 454L900 511V397Z" fill="#103A6C"/>
+  <rect x="190" y="710" width="1220" height="18" rx="9" fill="#1A2230"/>
+  <rect x="190" y="710" width="474" height="18" rx="9" fill="#4EA0FF"/>
+  <circle cx="664" cy="719" r="13" fill="#DDEEFF"/>
+  <rect x="120" y="42" width="220" height="42" rx="21" fill="#F16285"/>
+  <text x="148" y="69" fill="#090B10" font-family="Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="800">Direct playback</text>
+  <rect x="1126" y="126" width="286" height="34" rx="17" fill="#1B2535"/>
+  <text x="1152" y="148" fill="#EAF1FA" font-family="Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700">State restored: time, mute, rate, loop</text>
+  <text x="120" y="846" fill="#D5DCE8" font-family="Helvetica Neue, Arial, sans-serif" font-size="28" font-weight="500">Files opened from outside the workspace still resolve correctly through localResourceRoots.</text>
+</svg>

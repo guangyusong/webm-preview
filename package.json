@@ -1,0 +1,140 @@
+{
+  "name": "webm-preview",
+  "displayName": "WebM Preview",
+  "description": "Preview .webm files in VS Code with direct playback and a local-only compatibility fallback.",
+  "version": "0.1.0",
+  "publisher": "song",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guangyusong/webm-preview.git"
+  },
+  "homepage": "https://github.com/guangyusong/webm-preview#readme",
+  "bugs": {
+    "url": "https://github.com/guangyusong/webm-preview/issues"
+  },
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#0f172a"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "vscode",
+    "webm",
+    "video",
+    "preview",
+    "custom-editor"
+  ],
+  "preview": true,
+  "files": [
+    "dist/**",
+    "media/**",
+    "assets/icon.png",
+    "assets/icon.svg",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "SUPPORT.md",
+    "docs/**"
+  ],
+  "extensionKind": [
+    "ui"
+  ],
+  "main": "./dist/node/extension.js",
+  "browser": "./dist/web/extension.js",
+  "capabilities": {
+    "virtualWorkspaces": {
+      "supported": true
+    },
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "activationEvents": [
+    "onCustomEditor:webmPreview.preview",
+    "onCommand:webmPreview.clearCompatibilityCache"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "WebM Preview",
+      "properties": {
+        "webmPreview.restorePlaybackState": {
+          "type": "boolean",
+          "default": true,
+          "description": "Restore playback position, playback rate, volume, and loop state when the WebM preview is reopened."
+        },
+        "webmPreview.defaultMuted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Open WebM previews muted by default."
+        },
+        "webmPreview.loop": {
+          "type": "boolean",
+          "default": false,
+          "description": "Loop WebM previews by default."
+        },
+        "webmPreview.fitMode": {
+          "type": "string",
+          "enum": [
+            "contain",
+            "cover"
+          ],
+          "default": "contain",
+          "markdownDescription": "Control how the player fits video within the editor. `contain` preserves the full frame and `cover` crops to fill the available space."
+        },
+        "webmPreview.compatibilityFallback": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "When direct playback fails in desktop VS Code, generate and cache a compatibility preview. This fallback requires local `ffmpeg` and re-encodes video to H.264 with MP3 audio for broader VS Code webview support."
+        },
+        "webmPreview.maxCompatibilityCacheMb": {
+          "type": "number",
+          "minimum": 0,
+          "default": 256,
+          "markdownDescription": "Maximum on-disk size in MB for cached compatibility previews. `0` disables automatic pruning."
+        }
+      },
+      "order": 1
+    },
+    "commands": [
+      {
+        "command": "webmPreview.clearCompatibilityCache",
+        "title": "WebM Preview: Clear Compatibility Cache",
+        "category": "WebM Preview"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "webmPreview.preview",
+        "displayName": "WebM Preview",
+        "selector": [
+          {
+            "filenamePattern": "*.webm"
+          }
+        ],
+        "priority": "default"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "watch": "node ./scripts/build.mjs --watch",
+    "check": "tsc --noEmit",
+    "fixtures": "node ./scripts/generate-fixtures.mjs",
+    "assets:promo": "node ./scripts/generate-promo-assets.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "package:vsix": "npx @vscode/vsce package --no-dependencies",
+    "vscode:prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.25.11",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,129 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--vscode-editor-background);
+  color: var(--vscode-editor-foreground);
+  font: 13px var(--vscode-font-family);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.player-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--vscode-editor-background);
+}
+
+.loading-indicator,
+.loading-message,
+.loading-error,
+.player,
+.compatibility-frame {
+  display: none;
+}
+
+.loading .loading-indicator,
+.loading .loading-message,
+.error .loading-error,
+.ready .player,
+.ready .compatibility-frame {
+  display: block;
+}
+
+.loading-indicator {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--vscode-progressBar-background);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: webm-player-spin 0.8s linear infinite;
+}
+
+.loading-message,
+.loading-error {
+  position: absolute;
+  inset: auto 16px 16px;
+  max-width: min(36rem, calc(100% - 32px));
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--vscode-editor-background) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--vscode-editor-foreground) 14%, transparent);
+  color: var(--vscode-descriptionForeground);
+  line-height: 1.5;
+}
+
+.loading-error {
+  color: var(--vscode-editor-foreground);
+}
+
+.loading-error p {
+  margin: 0;
+}
+
+.error-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.error-actions button {
+  appearance: none;
+  border: 1px solid var(--vscode-button-border, transparent);
+  background: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.error-actions button:hover {
+  background: var(--vscode-button-hoverBackground);
+}
+
+.player {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  background: #000;
+  outline: none;
+}
+
+.player-contain {
+  object-fit: contain;
+}
+
+.player-cover {
+  object-fit: cover;
+}
+
+.compatibility-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+@keyframes webm-player-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

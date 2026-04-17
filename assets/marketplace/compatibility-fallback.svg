@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#10131A"/>
+      <stop offset="1" stop-color="#1A2231"/>
+    </linearGradient>
+    <linearGradient id="video" x1="360" y1="194" x2="1120" y2="660" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1B2030"/>
+      <stop offset="1" stop-color="#0A0D14"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="136" y="104" width="1328" height="692" rx="28" fill="#0E121A"/>
+  <rect x="136" y="104" width="1328" height="58" rx="28" fill="#161E28"/>
+  <rect x="174" y="196" width="850" height="516" rx="24" fill="url(#video)"/>
+  <circle cx="598" cy="418" r="156" fill="#F06A84" fill-opacity="0.24"/>
+  <circle cx="728" cy="480" r="172" fill="#F7A64A" fill-opacity="0.18"/>
+  <circle cx="870" cy="366" r="140" fill="#4DA1FF" fill-opacity="0.18"/>
+  <rect x="224" y="618" width="742" height="44" rx="14" fill="#131927"/>
+  <text x="250" y="646" fill="#F3F7FD" font-family="Helvetica Neue, Arial, sans-serif" font-size="21" font-weight="700">Preparing compatibility preview...</text>
+  <rect x="1058" y="196" width="368" height="516" rx="24" fill="#111823"/>
+  <text x="1088" y="246" fill="#F6F9FD" font-family="Menlo, Monaco, monospace" font-size="22" font-weight="700">WebM Preview log</text>
+  <text x="1088" y="300" fill="#C3CBD8" font-family="Menlo, Monaco, monospace" font-size="18">resolve file:///demo/aurora.webm</text>
+  <text x="1088" y="340" fill="#C3CBD8" font-family="Menlo, Monaco, monospace" font-size="18">compatibilityPreviewRequested</text>
+  <text x="1088" y="380" fill="#C3CBD8" font-family="Menlo, Monaco, monospace" font-size="18">compatibilityPreviewBuildStart</text>
+  <text x="1088" y="420" fill="#F6AA4C" font-family="Menlo, Monaco, monospace" font-size="18">respond 206 ... bytes=0-65535</text>
+  <text x="1088" y="460" fill="#8EE0AA" font-family="Menlo, Monaco, monospace" font-size="18">compatibilityPlayerReady</text>
+  <text x="1088" y="500" fill="#C3CBD8" font-family="Menlo, Monaco, monospace" font-size="18">compatibility-canplay</text>
+  <text x="1088" y="540" fill="#C3CBD8" font-family="Menlo, Monaco, monospace" font-size="18">compatibility-playing</text>
+  <rect x="1088" y="608" width="296" height="38" rx="19" fill="#1B2535"/>
+  <text x="1115" y="633" fill="#E8EEF8" font-family="Helvetica Neue, Arial, sans-serif" font-size="18" font-weight="700">Cache limit and clear command</text>
+  <rect x="136" y="50" width="364" height="42" rx="21" fill="#F6A64A"/>
+  <text x="163" y="77" fill="#11151D" font-family="Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="800">Compatibility fallback</text>
+  <text x="136" y="846" fill="#D5DCE8" font-family="Helvetica Neue, Arial, sans-serif" font-size="28" font-weight="500">Fallback is local-only, cached, and only used after a real direct-playback failure.</text>
+</svg>
