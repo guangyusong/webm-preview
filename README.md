@@ -1,8 +1,8 @@
-# WebM Preview
+# WebM Video Viewer
 
-WebM Preview opens `.webm` files in a focused VS Code custom editor instead of dropping them into the text or binary editor.
+WebM Video Viewer opens `.webm` files in a focused VS Code custom editor instead of dropping them into the text or binary editor.
 
-![WebM Preview hero](https://raw.githubusercontent.com/guangyusong/webm-preview/main/assets/marketplace/hero.png)
+![WebM Video Viewer hero](https://raw.githubusercontent.com/guangyusong/webm-preview/main/assets/marketplace/hero.png)
 
 It is built around a simple rule:
 
@@ -42,7 +42,7 @@ Some VS Code runtimes can fail to play a `.webm` that works in Chrome. When `web
 - The original file is not uploaded anywhere by this extension.
 - The compatibility preview is stored locally in the extension storage area.
 - `webmPreview.maxCompatibilityCacheMb` controls cache size.
-- `WebM Preview: Clear Compatibility Cache` removes generated previews on demand.
+- `WebM Video Viewer: Clear Compatibility Cache` removes generated previews on demand.
 - The repo also includes a synthetic demo clip in `assets/demo/aurora-sample.webm` for public testing.
 
 ## Development

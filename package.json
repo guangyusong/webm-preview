@@ -1,6 +1,6 @@
 {
   "name": "webm-preview",
-  "displayName": "WebM Preview",
+  "displayName": "WebM Video Viewer",
   "description": "Preview .webm files in VS Code with direct playback and a local-only compatibility fallback.",
   "version": "0.1.0",
   "publisher": "gsongtools",
@@ -61,7 +61,7 @@
   ],
   "contributes": {
     "configuration": {
-      "title": "WebM Preview",
+      "title": "WebM Video Viewer",
       "properties": {
         "webmPreview.restorePlaybackState": {
           "type": "boolean",
@@ -104,14 +104,14 @@
     "commands": [
       {
         "command": "webmPreview.clearCompatibilityCache",
-        "title": "WebM Preview: Clear Compatibility Cache",
-        "category": "WebM Preview"
+        "title": "WebM Video Viewer: Clear Compatibility Cache",
+        "category": "WebM Video Viewer"
       }
     ],
     "customEditors": [
       {
         "viewType": "webmPreview.preview",
-        "displayName": "WebM Preview",
+        "displayName": "WebM Video Viewer",
         "selector": [
           {
             "filenamePattern": "*.webm"
