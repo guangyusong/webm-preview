@@ -3,7 +3,7 @@
   "displayName": "WebM Preview",
   "description": "Preview .webm files in VS Code with direct playback and a local-only compatibility fallback.",
   "version": "0.1.0",
-  "publisher": "song",
+  "publisher": "gsongtools",
   "license": "MIT",
   "repository": {
     "type": "git",
