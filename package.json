@@ -2,7 +2,7 @@
   "name": "webm-preview",
   "displayName": "WebM Video Viewer",
   "description": "Preview .webm files in VS Code with direct playback and a local-only compatibility fallback.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "gsongtools",
   "license": "MIT",
   "repository": {

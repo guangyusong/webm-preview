@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Corrected the license copyright attribution to Guangyu Song.
+- Kept the published display name as WebM Video Viewer for Marketplace compatibility.
+
 ## 0.1.0
 
 - Added direct `.webm` playback in a read-only custom editor.
