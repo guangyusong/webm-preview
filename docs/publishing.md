@@ -9,19 +9,23 @@ A public GitHub repository is the right minimum:
 - it lets Marketplace README images resolve over `https`
 - it gives the VSIX and source a stable public home
 
-## Suggested public metadata
+## Current public metadata
 
-Once the repository exists, add these fields to `package.json`:
+This repository is now public at:
+
+- `https://github.com/guangyusong/webm-preview`
+
+The extension manifest already includes:
 
 ```json
 {
   "repository": {
     "type": "git",
-    "url": "https://github.com/<you>/webm-preview.git"
+    "url": "https://github.com/guangyusong/webm-preview.git"
   },
-  "homepage": "https://github.com/<you>/webm-preview#readme",
+  "homepage": "https://github.com/guangyusong/webm-preview#readme",
   "bugs": {
-    "url": "https://github.com/<you>/webm-preview/issues"
+    "url": "https://github.com/guangyusong/webm-preview/issues"
   }
 }
 ```
@@ -44,9 +48,6 @@ npm run assets:promo
 
 ## Final publish checklist
 
-1. Create a public GitHub repo and push this folder.
-2. Add `repository`, `homepage`, and `bugs` fields.
-3. Decide whether to keep `"preview": true` for the first Marketplace release.
-4. Reference the promo PNGs from the README using the GitHub-backed `https` URLs.
-5. Run `npm run build`, `npm test`, and `npm run package:vsix`.
-6. Publish with `vsce publish` using your Marketplace publisher token.
+1. Decide whether to keep `"preview": true` for the first Marketplace release.
+2. Run `npm run build`, `npm test`, and `npm run package:vsix`.
+3. Publish with `vsce publish` using your Marketplace publisher token.
