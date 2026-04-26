@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
-import { existsSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from 'node:fs';
 import { mkdtemp } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import os from 'node:os';
@@ -64,6 +64,24 @@ test('compatibility fallback transcodes to H.264 video with MP3 audio', async ()
   assert.equal(audioStreams[0].codec_name, 'mp3');
 });
 
+test('compatibility fallback handles video-only WebM files', async () => {
+  const fixturePath = path.join(fixturesDir, 'direct-basic.webm');
+  const tempDir = await mkdtemp(path.join(os.tmpdir(), 'webm-preview-smoke-'));
+  const outputPath = path.join(tempDir, 'compat-video-only.mp4');
+
+  await execFileAsync('ffmpeg', buildCompatibilityTranscodeArgs(fixturePath, outputPath), {
+    cwd: repoRoot
+  });
+
+  const probe = await ffprobeJson(outputPath);
+  const videoStreams = probe.streams.filter((stream) => stream.codec_type === 'video');
+  const audioStreams = probe.streams.filter((stream) => stream.codec_type === 'audio');
+
+  assert.equal(videoStreams.length, 1);
+  assert.equal(videoStreams[0].codec_name, 'h264');
+  assert.equal(audioStreams.length, 0);
+});
+
 test('publication metadata and icon assets exist', () => {
   const requiredFiles = [
     'README.md',
@@ -78,6 +96,12 @@ test('publication metadata and icon assets exist', () => {
     assert.ok(existsSync(absolutePath), `missing ${relativePath}`);
     assert.ok(statSync(absolutePath).size > 0, `${relativePath} is empty`);
   }
+});
+
+test('publication metadata prefers the workspace extension host', () => {
+  const packageJson = JSON.parse(readFileSync(path.join(repoRoot, 'package.json'), 'utf8'));
+
+  assert.deepEqual(packageJson.extensionKind, ['workspace', 'ui']);
 });
 
 async function ffprobeJson(filePath) {

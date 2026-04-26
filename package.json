@@ -1,8 +1,8 @@
 {
   "name": "webm-preview",
   "displayName": "WebM Video Viewer",
-  "description": "Preview .webm files in VS Code with direct playback and a local-only compatibility fallback.",
-  "version": "0.1.1",
+  "description": "Preview .webm files in VS Code with direct playback and a compatibility fallback.",
+  "version": "0.1.2",
   "publisher": "gsongtools",
   "license": "MIT",
   "repository": {
@@ -43,6 +43,7 @@
     "docs/**"
   ],
   "extensionKind": [
+    "workspace",
     "ui"
   ],
   "main": "./dist/node/extension.js",

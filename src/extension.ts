@@ -17,6 +17,7 @@ import { buildCompatibilityTranscodeArgs } from './shared/compatibility';
 import { getPlayerWebviewHtml } from './shared/playerWebviewHtml';
 
 const VIEW_TYPE = 'webmPreview.preview';
+const NODE_FILE_SYSTEM_SCHEMES = new Set(['file', 'vscode-remote']);
 
 export function activate(context: vscode.ExtensionContext): void {
   const output = vscode.window.createOutputChannel('WebM Preview');
@@ -231,8 +232,10 @@ class CompatibilityPreviewCache implements vscode.Disposable {
   }
 
   async ensurePreview(resource: vscode.Uri): Promise<vscode.Uri> {
-    if (resource.scheme !== 'file') {
-      throw new Error('Compatibility previews are currently only available for local files.');
+    if (!isNodeFileSystemResource(resource)) {
+      throw new Error(
+        `Compatibility previews require a file that is readable from the Node extension host; ${resource.scheme} resources can only use direct playback.`
+      );
     }
 
     await mkdir(this.rootUri.fsPath, {
@@ -687,7 +690,7 @@ function getLocalResourceRoots(
     vscode.Uri.joinPath(extensionUri, 'dist', 'webview')
   ];
 
-  if (resource.scheme === 'file') {
+  if (isNodeFileSystemResource(resource)) {
     roots.push(directoryOf(resource));
   }
 
@@ -730,6 +733,10 @@ function directoryOf(uri: vscode.Uri): vscode.Uri {
   return uri.with({
     path: uri.path.slice(0, lastSlash)
   });
+}
+
+function isNodeFileSystemResource(uri: vscode.Uri): boolean {
+  return NODE_FILE_SYSTEM_SCHEMES.has(uri.scheme);
 }
 
 function parseRoute(pathname: string): ParsedRoute | undefined {

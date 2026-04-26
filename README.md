@@ -7,7 +7,7 @@ WebM Video Viewer opens `.webm` files in a focused VS Code custom editor instead
 It is built around a simple rule:
 
 - Try the original `.webm` first.
-- Only if that fails in desktop VS Code, generate a local compatibility preview.
+- Only if that fails in desktop VS Code, generate a compatibility preview where the extension host can read the file.
 
 ## What It Does
 
@@ -16,6 +16,7 @@ It is built around a simple rule:
 - Supports files inside or outside the current workspace.
 - Falls back to a cached H.264 + MP3 preview only after a real playback failure.
 - Keeps the browser-hosted build honest: web extensions stay direct-playback-only.
+- Supports Remote SSH/Codespaces fallback when the desktop Node extension host runs with the workspace and `ffmpeg` is available there.
 
 ## Screenshots
 
@@ -37,10 +38,11 @@ The extension is built around a `CustomReadonlyEditorProvider`, which is the rig
 
 ## Privacy And Compatibility
 
-Some VS Code runtimes can fail to play a `.webm` that works in Chrome. When `webmPreview.compatibilityFallback` is enabled, desktop VS Code can generate a cached H.264 + MP3 preview with local `ffmpeg` after a real playback failure.
+Some VS Code runtimes can fail to play a `.webm` that works in Chrome. When `webmPreview.compatibilityFallback` is enabled, desktop VS Code can generate a cached H.264 + MP3 preview with `ffmpeg` after a real playback failure.
 
 - The original file is not uploaded anywhere by this extension.
-- The compatibility preview is stored locally in the extension storage area.
+- The compatibility preview is stored in the extension storage area for the active extension host.
+- In Remote SSH/Codespaces, `ffmpeg` must be available in the remote workspace environment.
 - `webmPreview.maxCompatibilityCacheMb` controls cache size.
 - `WebM Video Viewer: Clear Compatibility Cache` removes generated previews on demand.
 - The repo also includes a synthetic demo clip in `assets/demo/aurora-sample.webm` for public testing.

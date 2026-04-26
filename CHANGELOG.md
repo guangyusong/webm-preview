@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- Prefer the workspace extension host so compatibility previews can run against Remote SSH/Codespaces files.
+- Allow the desktop fallback to prepare previews for `vscode-remote` file resources.
+
 ## 0.1.1
 
 - Corrected the license copyright attribution to Guangyu Song.

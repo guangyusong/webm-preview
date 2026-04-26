@@ -23,7 +23,7 @@ The extension now uses a two-stage model:
 
 Direct playback is the intended architecture. The webview loads the original resource using `webview.asWebviewUri(...)`, and the extension explicitly adds the opened file’s directory to `localResourceRoots` when needed. This is important for files such as `~/Downloads/test.webm` that are outside the active workspace.
 
-The compatibility preview is a desktop-only fallback. When enabled, the extension can generate a cached H.264 + MP3 preview with `ffmpeg` after a real media error. This keeps the common path simple while still providing a recovery path for runtimes where WebM playback in VS Code is unreliable.
+The compatibility preview is a desktop Node fallback. When enabled, the extension can generate a cached H.264 + MP3 preview with `ffmpeg` after a real media error. This keeps the common path simple while still providing a recovery path for runtimes where WebM playback in VS Code is unreliable.
 
 ## Runtime model
 
@@ -44,7 +44,7 @@ The extension still produces both `main` and `browser` bundles.
 - Desktop Node entry: direct playback plus optional compatibility preview generation.
 - Browser entry: direct playback only.
 
-This keeps the extension honest about environment limits. Browser-hosted VS Code cannot spawn executables, so preview generation is intentionally not part of that runtime.
+The desktop extension prefers the workspace extension host, then falls back to the UI extension host. That matters for Remote SSH and Codespaces: the compatibility fallback must run on the side where the opened file is readable and where `ffmpeg` is installed. Browser-hosted VS Code cannot spawn executables, so preview generation is intentionally not part of that runtime.
 
 ## Security posture
 
@@ -100,7 +100,7 @@ Avoid these traps:
 The current release posture is "preview, but shippable":
 
 - direct playback is the intended first path
-- compatibility fallback is explicit, cached, and desktop-only
+- compatibility fallback is explicit, cached, and desktop-Node-only
 - the cache has a size limit and a clear command
 - smoke tests generate their own non-private fixtures
 
@@ -111,4 +111,4 @@ The next meaningful upgrades are:
 1. Add editor toolbar commands for fit mode and replay.
 2. Add a metadata panel for codec and duration details.
 3. Add real extension-host integration tests for custom-editor open behavior.
-4. Explore a remote-safe compatibility strategy that does not require local `ffmpeg`.
+4. Add clearer diagnostics for missing `ffmpeg` in remote workspace environments.

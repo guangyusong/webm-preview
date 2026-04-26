@@ -123,9 +123,7 @@ function getLocalResourceRoots(extensionUri: vscode.Uri, resource: vscode.Uri): 
     vscode.Uri.joinPath(extensionUri, 'dist', 'webview')
   ];
 
-  if (resource.scheme === 'file') {
-    roots.push(directoryOf(resource));
-  }
+  roots.push(directoryOf(resource));
 
   return dedupeUris(roots);
 }
